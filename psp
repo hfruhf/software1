@@ -1,0 +1,53 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 12 18:48:47 2019
+
+@author: Alin
+"""
+# 导入random模块
+import random
+
+
+# 定义产生真分数的函数
+def fraction():
+    while (True):
+        a = random.randint(1, 100)
+        b = random.randint(1, 100)
+        if a / b < 1:
+            return str(a) + "/" + str(b)
+            break
+
+
+# 定义产生带括号运算函数
+def brackets():
+    a = "("
+    e = ")"
+    b = str(random.randint(1, 100))
+    c = random.choice('+-*/')
+    d = fraction()
+    if eval(b + c + d) > 0:
+        return a + b + c + d + e
+
+
+# 生成并打印四则运算表达式
+def main():
+    print("请输入题目数量:")
+    k = int(input())
+    for i in range(k):
+        a = brackets()
+        b = str(random.choice('+-*/'))
+        c = fraction()
+        print("第{}题:".format(i + 1), a, b, c, "=")
+    # pr int(a,b,c,"=")
+        if eval(a + b + c) >= 0:
+            shuzi = input()
+            if shuzi == eval(a + b + c):
+            # print(a,b,c,"=",shuzi)
+                print('{}:√'.format(i + 1))
+
+            else:
+                print('{}:×'.format(i + 1))
+                print('正确的答案为：', eval(a + b + c))
+if __name__ == '__main__':
+    main()
+# print("最终得分：{}".format(s))
